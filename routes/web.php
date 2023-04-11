@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\ExpenseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ExpenseController::class, 'index']);
+Route::get('create', [ExpenseController::class, 'create']);
+Route::POST('store', [ExpenseController::class, 'store']);
+Route::POST('delete/{id}', [ExpenseController::class, 'delete']);
+Route::POST('edit/{id}', [ExpenseController::class, 'edit']);
+Route::PUT('update/{id}', [ExpenseController::class, 'update']);
